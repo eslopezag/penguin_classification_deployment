@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<style>
+    .form-control {
+        margin: 1rem 0;
+    }
+    
+    .form-control label,
+    .form-control input,
+    .form-control textarea {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+    
+    .form-control input,
+    .form-control textarea {
+        border: 1px solid #a1a1a1;
+        font: inherit;
+        border-radius: 2px;
+    }
+    
+    .form-control input:focus,
+    .form-control textarea:focus {
+        outline-color: #0a2081;
+    }
+    
+    .form-control input.invalid,
+    .form-control textarea.invalid {
+        border-color: red;
+    }
+
+    .product-form {
+        width: 20rem;
+        max-width: 90%;
+        margin: auto;
+        display: block;
+    }
+
+    .product-item {
+        width: 20rem;
+        max-width: 95%;
+        margin: 1rem;
+    }
+
+    .product__title {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .product__price {
+        text-align: center;
+        color: #4d4d4d;
+        margin-bottom: 0.5rem;
+    }
+
+    .product__description {
+        text-align: center;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.25rem 1rem;
+        text-decoration: none;
+        font: inherit;
+        border: 1px solid #0a2081;
+        color: #0a2081;
+        background: white;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .btn:hover,
+    .btn:active {
+        background-color: #0a2081;
+        color: white;
+    }
+
+    .btn.danger {
+        color: red;
+        border-color: red;
+    }
+
+    .btn.danger:hover,
+    .btn.danger:active {
+        background: red;
+        color: white;
+    }
+</style>
+
+<head>
+    <h1 style="text-align: center;">Penguin Classifier</h1>
+</head>
+
+<body>
+    <div class="product-form">
+        <div class="form-control">
+            <label for="culmen_length">Culmen length</label>
+            <input 
+                type="text"
+                name="culmen length" 
+                id="culmen_length" 
+                placeholder="culmen length in mm"></input>
+        </div>
+
+        <div class="form-control">
+            <label for="culmen_depth">Culmen depth</label>
+            <input 
+                name="culmen depth" 
+                id="culmen_depth"
+                placeholder="culmen depth in mm"></input>
+        </div>
+
+        <div class="form-control">
+            <label for="flipper_length">Flipper length</label>
+            <input 
+                name="flipper length" 
+                id="flipper_length" 
+                placeholder="flipper length in mm"></input>
+        </div>
+
+        <div style="text-align: center; margin-top:0.8cm;">
+            <button class="btn" onclick="callAPI()">Submit to Classifier</button>
+        </div>
+
+        <div class="form-control" style="margin-top:1.5cm;">
+            <label for="prediction">Classifier's prediction</label>
+            <textarea 
+                name="prediction" 
+                id="prediction"
+                rows="5"></textarea>
+        </div>
+    </div>
+</body>
+
+<script>
+    async function callAPI() {
+        console.log("Sending request to API")
+        const cl = document.getElementById("culmen_length").value
+        const cd = document.getElementById("culmen_depth").value
+        const fl = document.getElementById("flipper_length").value
+        const options = {
+            method: "POST",
+            headers: { "Content-Type" : "application/json; charset=UTF-8" },
+            body: JSON.stringify({ culmen_length: cl, culmen_depth: cd, flipper_length: fl })
+        }
+        
+        const response = await fetch("http://localhost:3000/json", options)
+        const res_data = await response.json()
+        console.log(res_data)
+
+        let predtext = document.getElementById("prediction")
+        predtext.value = res_data.prediction
+    }
+</script>

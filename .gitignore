@@ -1,9 +1,6 @@
 # Secret configurations
 secrets.*
 
-# Data
-*.csv
-
 # Hidden system files
 *.ini
 .DS_Store

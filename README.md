@@ -20,9 +20,9 @@ To create the Docker container from the image and start the uvicorn server, run 
 docker run -p 3000:80 penguin-app
 ```
 
-## How to Deploy the Application in AWS
+## How to Deploy the Application on AWS
 
-Steps to deploy a container in AWS ECS:
+Steps to deploy a container on AWS ECS:
 
 1. Create a repository in ECR through the AWS console.
 

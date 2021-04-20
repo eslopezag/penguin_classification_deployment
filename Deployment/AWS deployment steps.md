@@ -1,6 +1,6 @@
 # AWS Deployment Steps
 
-Steps to deploy a container in AWS ECS:
+Steps to deploy a container on AWS ECS:
 
 1. Create a repository in ECR through the AWS console.
 

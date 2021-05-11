@@ -34,11 +34,11 @@ Steps to deploy a container on AWS ECS:
 
         (linux/MAC shell:)
         export aws_access_key_id=
-        aws_secret_access_key=
+        export aws_secret_access_key=
 
     Alternatively, store this credentials in a `.aws/credentials` file inside your home folder as per the instructions [here](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file).
 
-1. Login the CLI to ECR:
+1. Log in the CLI to ECR:
 
         aws ecr get-login-password --region [REGION] | docker login --username AWS --password-stdin [AWS ACCOUNT ID].dkr.ecr.[REGION].amazonaws.com
 

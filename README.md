@@ -42,7 +42,7 @@ Steps to deploy a container on AWS ECS:
 
         aws ecr get-login-password --region [REGION] | docker login --username AWS --password-stdin [AWS ACCOUNT ID].dkr.ecr.[REGION].amazonaws.com
 
-1. Tag container with AWS ECR Repository name:
+1. Tag the container image with AWS ECR Repository name:
 
         docker tag [ORIGINAL IMAGE NAME] [AWS ACCOUNT ID].dkr.ecr.[REGION].amazonaws.com/[REPO NAME]:[USER-DEFINED TAG]
 

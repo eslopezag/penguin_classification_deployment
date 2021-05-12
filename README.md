@@ -52,6 +52,8 @@ Steps to deploy a container on AWS ECS:
 
 1. Create an ECS cluster through the AWS console.
 
+1. Make sure that the security group in front of the cluster instances has specific rules allowing inbound and outbound traffic through TCP port 80.
+
 1. Create an ECS Task through the AWS console using the desired image in the ECR repository.
 
 1. Run the ECS Task.

@@ -1,7 +1,7 @@
 # Base image:
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
 
-# Set working directory
+# Set working directory:
 WORKDIR /app
 
 # Expose port 80:

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import dill
@@ -32,7 +32,13 @@ class Penguin(BaseModel):
     flipper_length: float
 
 
-@app.get('/', response_class=JSONResponse)
+# Define the prediction response model:
+class PenguinSpeciesPrediction(BaseModel):
+    features: Penguin
+    prediction: str
+
+
+@app.get('/', response_model=PenguinSpeciesPrediction)
 def get_func(cl: float, cd: float, fl: float):
     """
     Serves predictions given query parameters specifying the penguin's
@@ -55,7 +61,7 @@ def get_func(cl: float, cd: float, fl: float):
     }
 
 
-@app.post('/json', response_class=JSONResponse)
+@app.post('/json', response_model=PenguinSpeciesPrediction)
 def post_json(penguin: Penguin):
     """
     Serves predictions given a request body specifying the penguin's features.

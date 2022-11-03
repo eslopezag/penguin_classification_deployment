@@ -1,0 +1,6 @@
+Dockerfile
+*.md
+*.sh
+*.bat
+tests.py
+conftest.py

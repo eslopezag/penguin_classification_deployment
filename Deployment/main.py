@@ -2,6 +2,7 @@ from fastapi import FastAPI, File
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import numpy as np
 import dill
 from operator import itemgetter
 from io import BytesIO
@@ -95,8 +96,9 @@ def post_file(file: bytes = File(...)):
 
     # Decode the bytes as text and split the lines:
     input_lines = file.decode().split()
-    # Split each line as a list of the three features:
-    X = [p.split(',') for p in input_lines]
+    # Split each line as a list of the three features and gather them in an
+    # array of floats:
+    X = np.array([p.split(',') for p in input_lines], dtype=float)
 
     # Get predicted categories:
     pred = itemgetter(*model.predict(X))(cats)

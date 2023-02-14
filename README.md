@@ -4,6 +4,8 @@ This educational project creates a docekrized API that serves a Random Forest mo
 
 <img src="https://imgur.com/orZWHly.png" alt="Penguin species in the dataset" width="800"/>
 
+Artwork by [@allison_horst](https://github.com/allisonhorst/palmerpenguins#meet-the-palmer-penguins)
+
 ## How to Build the Docker Image
 
 To build the Docker image, run the following command with the `Deployment` folder as the current directory:

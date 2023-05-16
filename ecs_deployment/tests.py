@@ -7,7 +7,7 @@ home = TestClient(app)
 
 
 def test_get_func():
-    response = home.get('/?cl=1.0&cd=1.0&fl=1.0')
+    response = home.get('/get?cl=1.0&cd=1.0&fl=1.0')
     assert response.status_code == 200
     assert 'features' in response.json()
     assert 'prediction' in response.json()

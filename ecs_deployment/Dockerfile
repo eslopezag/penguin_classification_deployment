@@ -11,7 +11,7 @@ EXPOSE 80
 COPY ./requirements.txt .
 
 # Install dependecies:
-RUN ["pip", "install", "-r", "requirements.txt"]
+RUN pip install -r requirements.txt
 
 # Copy the current local directory to the image's woking directory:
 COPY . .

@@ -1,6 +1,26 @@
-# AWS Deployment Steps
+# Deploying a Machine Learning Model for the Penguins Dataset using AWS ECS
 
-Steps to deploy a container on AWS ECS:
+## How to Build the Docker Image
+
+To build the Docker image, run the following command with this folder (`ecs_deployment`) as the current directory:
+
+```
+docker build -t penguin-app .
+```
+
+## How to Create and Start the Docker Container
+
+To create the Docker container from the image and start the uvicorn server locally, run the following command:
+
+```
+docker run -p 3000:80 penguin-app
+```
+
+Then you can go to http://localhost:3000/docs to see the API's documentation and test its endpoints.
+
+## How to Deploy the Application to AWS ECS
+
+Steps to deploy a container to AWS ECS:
 
 1. Create a repository in ECR through the AWS console.
 
@@ -20,7 +40,7 @@ Steps to deploy a container on AWS ECS:
 
         aws ecr get-login-password --region [REGION] | docker login --username AWS --password-stdin [AWS ACCOUNT ID].dkr.ecr.[REGION].amazonaws.com
 
-1. Tag container with AWS ECR Repository name:
+1. Tag the image with the AWS ECR Repository name:
 
         docker tag [ORIGINAL IMAGE NAME] [AWS ACCOUNT ID].dkr.ecr.[REGION].amazonaws.com/[REPO NAME]:[USER-DEFINED TAG]
 

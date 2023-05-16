@@ -1,0 +1,6 @@
+fastapi == 0.95.1
+uvicorn == 0.21.1
+dill == 0.3.3
+scikit-learn == 0.24.1
+python-multipart == 0.0.5
+mangum == 0.17.0

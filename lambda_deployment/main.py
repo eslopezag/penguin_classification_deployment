@@ -6,9 +6,10 @@ import numpy as np
 import dill
 from operator import itemgetter
 from io import BytesIO
+from mangum import Mangum
 
 
-app = FastAPI(title="Penguin Classifier")
+app = FastAPI(title="Penguin Classifier", root_path="/dev")
 
 app.add_middleware(
     CORSMiddleware,
@@ -39,7 +40,7 @@ class PenguinSpeciesPrediction(BaseModel):
     prediction: str
 
 
-@app.get('/', response_model=PenguinSpeciesPrediction)
+@app.get('/get', response_model=PenguinSpeciesPrediction)
 def get_func(cl: float, cd: float, fl: float):
     """
     Serves predictions given query parameters specifying the penguin's
@@ -117,11 +118,10 @@ def post_file(file: bytes = File(...)):
     )
 
 
+handler = Mangum(app)
+
 if __name__ == '__main__':
     import uvicorn
 
     # For local development:
-    # uvicorn.run("main:app", port=3000, reload=True)
-
-    # For Docker deployment:
-    uvicorn.run("main:app", host='0.0.0.0', port=80)
+    uvicorn.run("main:app", port=3000, reload=True)

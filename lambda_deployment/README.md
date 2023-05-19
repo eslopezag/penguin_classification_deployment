@@ -40,7 +40,7 @@ Steps to deploy a container to AWS Lambda:
 
         docker push [AWS ACCOUNT ID].dkr.ecr.[REGION].amazonaws.com/[REPO NAME]:[USER-DEFINED TAG]
 
-1. Create a Lambda Function through the AWS console specifying ir is based on a container image and passing the URI of the image you pushed to ECR (`[AWS ACCOUNT ID].dkr.ecr.[REGION].amazonaws.com/[REPO NAME]:[USER-DEFINED TAG]`).
+1. Create a Lambda Function through the AWS console specifying it is based on a container image and passing the URI of the image you pushed to ECR (`[AWS ACCOUNT ID].dkr.ecr.[REGION].amazonaws.com/[REPO NAME]:[USER-DEFINED TAG]`).
 
 1. Create an API Gateway through the AWS console using the non-private REST API type and the Regional endpoint type.
 
